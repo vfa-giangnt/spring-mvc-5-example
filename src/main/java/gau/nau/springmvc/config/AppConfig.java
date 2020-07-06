@@ -1,4 +1,4 @@
-package gau.nau.helloworld.config;
+package gau.nau.springmvc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "gau.nau.helloworld")
+@ComponentScan(basePackages = "gau.nau.springmvc")
 public class AppConfig {
     @Bean
     public InternalResourceViewResolver resolver() {

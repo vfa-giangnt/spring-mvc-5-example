@@ -1,4 +1,4 @@
-package gau.nau.helloworld.config;
+package gau.nau.springmvc.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
