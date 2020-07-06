@@ -1,0 +1,4 @@
+gau/nau/helloworld/config/AppConfig.class
+gau/nau/helloworld/config/SpringMvcDispatcherServletInitializer.class
+gau/nau/helloworld/controller/HelloWorldController.class
+gau/nau/helloworld/model/HelloWorld.class
