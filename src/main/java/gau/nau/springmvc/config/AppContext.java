@@ -1,5 +1,6 @@
 package gau.nau.springmvc.config;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -23,7 +25,7 @@ public class AppContext {
     private Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    public LocalSessionFactoryBean sessionFactory() throws IOException {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("gau.nau.springmvc.entity");
@@ -38,7 +40,7 @@ public class AppContext {
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
-        dataSource.setUsername(environment.getRequiredProperty("jdbc.password"));
+        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
 
         return dataSource;
     }
@@ -54,9 +56,14 @@ public class AppContext {
     }
 
     @Bean
-    public HibernateTransactionManager getTransactionManager() {
+    @Autowired
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) throws Exception {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory().getObject());
+        try {
+            transactionManager.setSessionFactory(sessionFactory().getObject());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return transactionManager;
     }

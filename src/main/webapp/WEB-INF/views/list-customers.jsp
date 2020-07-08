@@ -19,7 +19,7 @@
         <hr/>
 
         <input type="button" value="Add Customer"
-               onclick="window.location.href='showForm'; return false;"
+               onclick="window.location.href='updateForm'; return false;"
                class="btn btn-primary"/>
         <br/><br/>
         <div class="panel panel-info">

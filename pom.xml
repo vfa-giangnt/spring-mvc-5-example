@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>gau.nau.springmvc</groupId>
-    <artifactId>springmvc5-hibernate5-jsp-mysql-example</artifactId>
+    <artifactId>HelloSpring5</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>springmvc5-hibernate5-jsp-mysql-example Maven Webapp</name>
@@ -14,7 +14,8 @@
 
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <spring.version>5.1.0.RELEASE</spring.version>
+        <spring.version>5.2.6.RELEASE</spring.version>
+        <spring.orm.version>5.1.0.RELEASE</spring.orm.version>
         <hibernate.version>5.3.5.Final</hibernate.version>
         <hibernate.validator>5.4.1.Final</hibernate.validator>
         <c3p0.version>0.9.5.2</c3p0.version>
@@ -36,14 +37,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring.orm.version}</version>
         </dependency>
         <!-- Hibernate Core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.17.Final</version>
+            <version>5.3.2.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
         <!-- Hibernate Validator -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -79,6 +87,26 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.47</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.1.0.RELEASE</version>
+        </dependency>
+
+        <!-- API, java.xml.bind module -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+        <!-- Runtime, com.sun.xml.bind module -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
         </dependency>
     </dependencies>
     <build>
