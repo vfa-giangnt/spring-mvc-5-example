@@ -26,7 +26,7 @@ public class AppContext {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"gau.nau.springmvc.entity"});
+        sessionFactory.setPackagesToScan("gau.nau.springmvc.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
