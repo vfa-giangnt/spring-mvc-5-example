@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,38 +16,38 @@
 <body>
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
-        <h2 class="text-center">Spring MVC 5 + Hibernate 5 + JSP + MySQL
-            Example</h2>
+        <h3 class="text-center">Spring MVC 5 + Spring Data JPA 2 + JSP + MySQL
+            Example - Customer Management</h3>
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Add Customer</div>
             </div>
             <div class="panel-body">
-                <form:form action="saveCustomer" cssClass="form-horizontal"
-                           method="post" modelAttribute="customer">
+                <form:form action="${saveCustomer}" cssClass="form-horizontal"
+                           method="POST" modelAttribute="customer">
 
                     <!-- need to associate this data with customer id -->
-                    <form:hidden path="id" />
+                    <form:hidden path="id"/>
 
                     <div class="form-group">
-                        <label for="firstname" class="col-md-3 control-label">First
+                        <label for="firstName" class="col-md-3 control-label">First
                             Name</label>
                         <div class="col-md-9">
-                            <form:input path="firstName" cssClass="form-control" />
+                            <form:input path="firstName" cssClass="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-md-3 control-label">Last
+                        <label for="lastName" class="col-md-3 control-label">Last
                             Name</label>
                         <div class="col-md-9">
-                            <form:input path="lastName" cssClass="form-control" />
+                            <form:input path="lastName" cssClass="form-control"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="col-md-3 control-label">Email</label>
                         <div class="col-md-9">
-                            <form:input path="email" cssClass="form-control" />
+                            <form:input path="email" cssClass="form-control"/>
                         </div>
                     </div>
 

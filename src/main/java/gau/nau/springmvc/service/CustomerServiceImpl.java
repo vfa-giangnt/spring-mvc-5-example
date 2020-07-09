@@ -6,33 +6,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import gau.nau.springmvc.dao.CustomerDAO;
 import gau.nau.springmvc.entity.Customer;
+import gau.nau.springmvc.exception.ResourceNotFoundException;
+import gau.nau.springmvc.repository.CustomerRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private CustomerDAO customerDAO;
+    private CustomerRepository customerRepository;
 
     @Override
     @Transactional
     public List<Customer> getCustomers() {
-        return customerDAO.getCustomers();
+        return customerRepository.findAll();
     }
 
     @Override
     public void saveCustomer(Customer customer) {
-        customerDAO.saveCustomer(customer);
+        customerRepository.save(customer);
     }
 
     @Override
-    public Customer getCustomer(int id) {
-        return customerDAO.getCustomer(id);
+    @Transactional
+    public Customer getCustomer(int id) throws ResourceNotFoundException {
+        return customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     @Override
+    @Transactional
     public void deleteCustomer(int id) {
-        customerDAO.deleteCustomer(id);
+        customerRepository.deleteById(id);
     }
 }
