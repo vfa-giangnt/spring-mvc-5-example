@@ -19,7 +19,7 @@
         <hr/>
 
         <input type="button" value="Add Customer"
-               onclick="window.location.href='updateForm'; return false;"
+               onclick="window.location.href='showForm'; return false;"
                class="btn btn-primary"/>
         <br/><br/>
         <div class="panel panel-info">
@@ -39,7 +39,7 @@
                     <c:forEach var="tempCustomer" items="${customers}">
 
                         <!-- construct an "update" link with customer id -->
-                        <c:url var="updateLink" value="/customer/updateForm">
+                        <c:url var="updateLink" value="/customer/showForm">
                             <c:param name="customerId" value="${tempCustomer.id}"/>
                         </c:url>
 
