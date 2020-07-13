@@ -16,20 +16,27 @@ import gau.nau.springboot.service.EmployeeService;
 
 @Controller
 public class EmployeeController {
-
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/springboot/")
+    @GetMapping("/")
     public String viewHomePage(Model model) {
         return findPaginated(1, "firstName", "asc", model);
+    }
+
+    @GetMapping("/showNewEmployeeForm")
+    public String showNewEmployeeForm(Model model) {
+        // create model attribute to bind form data
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        return "new_employee";
     }
 
     @GetMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.saveEmployee(employee);
 
-        return "redirect:/springboot/";
+        return "redirect:/";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
@@ -44,7 +51,7 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable(value = "id") long id) {
         this.employeeService.deleteEmployeeById(id);
 
-        return "redirect:/springboot/";
+        return "redirect:/";
     }
 
     @GetMapping("/page/{pageNo}")
@@ -65,7 +72,6 @@ public class EmployeeController {
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "assc");
 
         model.addAttribute("listEmployees", list);
-
         return "index";
     }
 }
