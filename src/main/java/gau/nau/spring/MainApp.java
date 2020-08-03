@@ -22,7 +22,6 @@ public class MainApp {
         customerDAO.findById(id);
     }
     
-    
     private static void showAll() {
         CustomerDAO customerDAO = new CustomerDAO();
         customerDAO.showAll();
@@ -43,5 +42,4 @@ public class MainApp {
         customerDAO.save(new Customer("ThangNT", "Lao"));
         customerDAO.save(new Customer("LinhNTK", "Cambodia"));
     }
-    
 }
