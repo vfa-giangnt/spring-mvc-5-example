@@ -23,10 +23,10 @@ public class CustomerDAO {
         } catch (RuntimeException ex) {
             session.getTransaction().rollback();
             ex.printStackTrace();
-        } finally {
+        }/* finally {
             session.flush();
             session.close();
-        }
+        }*/
     }
     
     public Customer findById(int id) {
